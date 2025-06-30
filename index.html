@@ -3,19 +3,286 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/6717/6717248.png" type="image/x-icon">
-    <title>Teste de página</title>
+    <title>Super Loja Virtual</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            margin: 0;
+        }
+        
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .product {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 280px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .product:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            height: 180px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #777;
+        }
+        
+        .product-info {
+            padding: 15px;
+        }
+        
+        .product-title {
+            font-size: 18px;
+            margin: 0 0 10px;
+            color: #333;
+        }
+        
+        .product-price {
+            font-size: 22px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 0 0 15px;
+        }
+        
+        .product-description {
+            font-size: 14px;
+            color: #666;
+            margin: 0 0 15px;
+        }
+        
+        .select-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .select-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .select-btn.selected {
+            background-color: #e74c3c;
+        }
+        
+        .select-btn.selected:hover {
+            background-color: #c0392b;
+        }
+        
+        .cart-summary {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 30px;
+            position: sticky;
+            bottom: 20px;
+        }
+        
+        .cart-title {
+            margin-top: 0;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        .total {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            text-align: right;
+        }
+        
+        .selected-products {
+            margin-bottom: 20px;
+        }
+        
+        .selected-product {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .empty-cart {
+            color: #777;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .product {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header><p>Site de Compras</p></header>
-    <main>
-        <aside>lateral</aside>
-        <article>
-            <section>seçao 1</section>
-            <section>secao 2</section>
-        </article>
-    </main>
-    <footer>copyright</footer>
+    <header>
+        <h1>Super Loja Virtual</h1>
+        <p>Compre com segurança e facilidade</p>
+    </header>
+    
+    <div class="container">
+        <!-- Produto 1 -->
+        <div class="product">
+            <div class="product-image">
+                [Imagem do Smartphone]
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Smartphone Premium</h3>
+                <p class="product-price">R$ 2.499,90</p>
+                <p class="product-description">Smartphone com tela de 6.5", 128GB de armazenamento e câmera tripla.</p>
+                <button class="select-btn" data-price="2499.90" data-name="Smartphone Premium">Selecionar</button>
+            </div>
+        </div>
+        
+        <!-- Produto 2 -->
+        <div class="product">
+            <div class="product-image">
+                [Imagem do Notebook]
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Notebook Ultrafino</h3>
+                <p class="product-price">R$ 3.799,00</p>
+                <p class="product-description">Notebook com processador i7, 16GB RAM e SSD de 512GB.</p>
+                <button class="select-btn" data-price="3799.00" data-name="Notebook Ultrafino">Selecionar</button>
+            </div>
+        </div>
+        
+        <!-- Produto 3 -->
+        <div class="product">
+            <div class="product-image">
+                [Imagem do Fone de Ouvido]
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Fone Bluetooth</h3>
+                <p class="product-price">R$ 349,90</p>
+                <p class="product-description">Fone de ouvido sem fio com cancelamento de ruído.</p>
+                <button class="select-btn" data-price="349.90" data-name="Fone Bluetooth">Selecionar</button>
+            </div>
+        </div>
+        
+        <!-- Produto 4 -->
+        <div class="product">
+            <div class="product-image">
+                [Imagem da Smartwatch]
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Smartwatch Esportivo</h3>
+                <p class="product-price">R$ 899,90</p>
+                <p class="product-description">Relógio inteligente com monitoramento de atividades e batimentos.</p>
+                <button class="select-btn" data-price="899.90" data-name="Smartwatch Esportivo">Selecionar</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="cart-summary">
+        <h2 class="cart-title">Resumo do Pedido</h2>
+        <div class="selected-products" id="selected-products">
+            <div class="empty-cart">Nenhum produto selecionado</div>
+        </div>
+        <div class="total">
+            Total: R$ <span id="total-value">0,00</span>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.select-btn');
+            const selectedProductsDiv = document.getElementById('selected-products');
+            const totalValueSpan = document.getElementById('total-value');
+            
+            let selectedProducts = [];
+            let total = 0;
+            
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productName = this.getAttribute('data-name');
+                    const productPrice = parseFloat(this.getAttribute('data-price'));
+                    
+                    // Verifica se o produto já está selecionado
+                    const productIndex = selectedProducts.findIndex(p => p.name === productName);
+                    
+                    if (productIndex === -1) {
+                        // Adiciona o produto
+                        selectedProducts.push({
+                            name: productName,
+                            price: productPrice
+                        });
+                        total += productPrice;
+                        this.textContent = 'Remover';
+                        this.classList.add('selected');
+                    } else {
+                        // Remove o produto
+                        total -= selectedProducts[productIndex].price;
+                        selectedProducts.splice(productIndex, 1);
+                        this.textContent = 'Selecionar';
+                        this.classList.remove('selected');
+                    }
+                    
+                    updateCart();
+                });
+            });
+            
+            function updateCart() {
+                // Atualiza a lista de produtos selecionados
+                if (selectedProducts.length === 0) {
+                    selectedProductsDiv.innerHTML = '<div class="empty-cart">Nenhum produto selecionado</div>';
+                } else {
+                    let html = '';
+                    selectedProducts.forEach(product => {
+                        html += `
+                            <div class="selected-product">
+                                <span>${product.name}</span>
+                                <span>R$ ${product.price.toFixed(2).replace('.', ',')}</span>
+                            </div>
+                        `;
+                    });
+                    selectedProductsDiv.innerHTML = html;
+                }
+                
+                // Atualiza o total
+                totalValueSpan.textContent = total.toFixed(2).replace('.', ',');
+            }
+        });
+    </script>
 </body>
 </html>
